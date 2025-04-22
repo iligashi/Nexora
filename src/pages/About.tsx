@@ -6,10 +6,10 @@ import TestimonialsSection from '../components/TestimonialsSection';
 
 const About = () => {
   const stats = [
-    { label: 'Years of Experience', value: '10+' },
-    { label: 'Projects Completed', value: '500+' },
-    { label: 'Happy Clients', value: '200+' },
-    { label: 'Team Members', value: '25+' },
+    { label: 'Years of Experience', value: '5+' },
+    { label: 'Projects Completed', value: '20+' },
+    { label: 'Happy Clients', value: '10+' },
+    { label: 'Team Members', value: '5+' },
   ];
 
   const values = [
