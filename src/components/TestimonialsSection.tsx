@@ -14,25 +14,25 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: 'John Smith',
+    name: 'Artan Hoxha',
     role: 'CEO',
-    company: 'TechKosova',
+    company: '74 Lounge & Bar',
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&auto=format',
     content: 'Working with this team has been an absolute pleasure. Their expertise and dedication to delivering high-quality results have exceeded our expectations.'
   },
   {
     id: 2,
-    name: 'Sarah Johnson',
+    name: 'Pirraku',
     role: 'Marketing Director',
-    company: 'Kosova Digital',
+    company: 'PoliKlinika',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&auto=format',
     content: 'The level of professionalism and attention to detail is outstanding. They truly understand our business needs and deliver solutions that drive results.'
   },
   {
     id: 3,
-    name: 'Michael Chen',
-    role: 'Product Manager',
-    company: 'Innovate Prishtina',
+    name: 'Edi Kuliqi',
+    role: 'CEO',
+    company: 'Sword Agency',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&auto=format',
     content: 'Their innovative approach and technical expertise have helped us transform our digital presence. Highly recommended!'
   }

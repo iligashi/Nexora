@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a993c78a.css",
+    "main.js": "/static/js/main.12460313.js",
+    "static/js/453.2947bfc5.chunk.js": "/static/js/453.2947bfc5.chunk.js",
+    "static/media/office.jpg": "/static/media/office.c5731b083124df97b9b8.jpg",
+    "static/media/AI workout.png": "/static/media/AI workout.0297e2c99b3166d55a63.png",
+    "static/media/Fitnes.png": "/static/media/Fitnes.79d1e65d621d13ade088.png",
+    "static/media/E commerce.png": "/static/media/E commerce.484b53c4104fe9082e8c.png",
+    "static/media/RestaurantMenu.png": "/static/media/RestaurantMenu.18bbc1818da927bcc4fb.png",
+    "static/media/RealEstate.png": "/static/media/RealEstate.bf20a5db8ad52f6522cd.png",
+    "static/media/FashionBrand.png": "/static/media/FashionBrand.7181e9fb1b94b74190d6.png",
+    "index.html": "/index.html",
+    "main.a993c78a.css.map": "/static/css/main.a993c78a.css.map",
+    "main.12460313.js.map": "/static/js/main.12460313.js.map",
+    "453.2947bfc5.chunk.js.map": "/static/js/453.2947bfc5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a993c78a.css",
+    "static/js/main.12460313.js"
+  ]
+}
