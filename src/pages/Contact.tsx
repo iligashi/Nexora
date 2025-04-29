@@ -1,9 +1,16 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init("XjDQ16Moq4IOUH77j");
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,45 +35,82 @@ const Contact = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name === 'from_name' ? 'name' : name === 'from_email' ? 'email' : name]: value,
     }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
-
-    try {
-      await emailjs.send(
-        'service_h3ral8d',
-        'template_0dzx88f',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          service: formData.service,
-          message: formData.message,
-        },
-        'XjDQ16Moq4IOUH77j'
-      );
-
-      setStatus({
-        submitted: true,
-        submitting: false,
-        info: { error: false, msg: 'Message sent successfully!' },
-      });
-      setFormData({
-        name: '',
-        email: '',
-        service: 'Logo Design',
-        message: '',
-      });
-    } catch (error) {
+    
+    // Validate form data
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setStatus({
         submitted: false,
         submitting: false,
-        info: { error: true, msg: 'An error occurred. Please try again later.' },
+        info: { error: true, msg: 'Please fill in all required fields.' },
+      });
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus({
+        submitted: false,
+        submitting: false,
+        info: { error: true, msg: 'Please enter a valid email address.' },
+      });
+      return;
+    }
+
+    setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
+
+    const templateParams = {
+      name: formData.name.trim(),
+      from_email: formData.email.trim(),
+      service: formData.service,
+      message: formData.message.trim(),
+      email: 'ilazgashi258@gmail.com'
+    };
+
+    try {
+      const result = await emailjs.send(
+        'service_1zjm01w',
+        'template_a1vwec8',
+        templateParams,
+        'XjDQ16Moq4IOUH77j'
+      );
+
+      if (result.text === 'OK') {
+        setStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: 'Message sent successfully! We will get back to you soon.' },
+        });
+        setFormData({
+          name: '',
+          email: '',
+          service: 'Logo Design',
+          message: '',
+        });
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus({
+        submitted: false,
+        submitting: false,
+        info: { 
+          error: true, 
+          msg: 'Unable to send message at this time. Please try again later or contact us directly at ilazgashi258@gmail.com' 
+        },
       });
     }
   };
@@ -121,7 +165,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                  <p className="text-gray-400">+38349732127 , +38348222209 , +38349662128 </p>
+                  <p className="text-gray-400">+38349732127</p>
                 </div>
               </div>
             </div>
@@ -133,7 +177,7 @@ const Contact = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Name
