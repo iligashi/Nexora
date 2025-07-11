@@ -1,4 +1,4 @@
-# Sword Agency Website
+# Nexora Agency Website
 
 A modern, responsive website for Sword Agency built with React, TypeScript, and Tailwind CSS.
 
