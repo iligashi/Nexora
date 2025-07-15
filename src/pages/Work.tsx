@@ -6,6 +6,7 @@ import Fitnes from '../img/Fitnes.png';
 import RestaurantMenu from '../img/RestaurantMenu.png';
 import FashionBrand from '../img/FashionBrand.png';
 import RealEstate from '../img/RealEstate.png';
+import Poliklinika from '../img/Poliklinika.png';  
 
 const Work = () => {
   const [filter, setFilter] = useState('all');
@@ -61,6 +62,14 @@ const Work = () => {
       image: RealEstate,
       description: 'Property listing and management platform.',
     },
+    {
+      id: 7,
+      title: 'Poliklinika - Healthcare App',
+      category: 'web',
+      image: Poliklinika,
+      description: 'Healthcare app for managing patient appointments and records.',
+      link: 'https://poliklinikaa.netlify.app/',
+    }
   ];
 
   const filteredProjects = projects.filter(
@@ -116,11 +125,25 @@ const Work = () => {
                 className="group relative overflow-hidden rounded-lg bg-gray-900"
               >
                 <div className="aspect-w-16 aspect-h-9">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                  />
+                  {project.id === 7 ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                    />
+                  )}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -160,4 +183,4 @@ const Work = () => {
   );
 };
 
-export default Work; 
+export default Work;
